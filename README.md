@@ -2,7 +2,7 @@
 
 ## Overview
 
-**AdvanceTech Equipment Planner** is a web-based decision support tool for medical equipment annual replacement planning. It combines equipment lifecycle analytics, regulatory compliance tracking, and data-driven scoring to help healthcare facilities make informed equipment replacement decisions aligned with ASHE, ECRI, and FDA guidelines.
+**BEMS Equipment Planner** is a web-based decision support tool for medical equipment annual replacement planning. It combines equipment lifecycle analytics, regulatory compliance tracking, and data-driven scoring to help healthcare facilities make informed equipment replacement decisions aligned with ASHE, ECRI, and FDA guidelines.
 
 ## Key Features
 
