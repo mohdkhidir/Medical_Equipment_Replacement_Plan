@@ -17,6 +17,19 @@ export type ReplacementPriority = 'immediate' | 'plan' | 'monitor' | 'continue';
 
 export type AttachmentFileType = 'image' | 'video' | 'document' | 'other';
 
+export type AttachmentCategory =
+  | 'image'
+  | 'supporting_document'
+  | 'birth_certificate'
+  | 'authority_registration';
+
+export const ATTACHMENT_CATEGORY_LABELS: Record<AttachmentCategory, string> = {
+  image: 'Image',
+  supporting_document: 'Supporting Document',
+  birth_certificate: 'Birth Certificate / Equipment Accepting Form',
+  authority_registration: 'Authority Registration Certificate',
+};
+
 export interface Attachment {
   id: string;
   equipmentId: string;
@@ -26,6 +39,7 @@ export interface Attachment {
   sizeBytes: number;
   uploadedAt: string;
   caption: string;
+  category?: AttachmentCategory;
 }
 
 export interface MaintenanceRecord {
