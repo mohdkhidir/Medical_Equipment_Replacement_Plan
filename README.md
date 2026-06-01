@@ -1,4 +1,4 @@
-# AdvanceTech Equipment Planner
+# Medical Equipment Planner
 
 ## Overview
 
@@ -17,8 +17,8 @@
 
 - **Safety Override Logic**: Immediate replacement flag if:
   - Active FDA recalls or drug alerts
-  - JCAHO non-compliance
-  - Pending safety bulletins
+  - ISO & MDA non-compliance analysis
+  - Product safety bulletins
 
 ### 📋 Equipment Registry
 - Comprehensive equipment database with 8 categories:
@@ -31,24 +31,13 @@
   - Rehabilitation Equipment (Treadmills, therapy devices)
   - Sterilization (Autoclaves, high-level disinfectants)
 
-- JCAHO-compliant equipment tracking with:
+- Compile equipment tracking with:
   - Serial numbers and acquisition dates
   - Manufacturer and model information
   - Maintenance history and cost tracking
   - Annual utilization hours
   - Location and department assignment
   - Custom notes and alerts
-
-### 📎 File Attachment Management
-- **Categorized Attachments** with 4 types:
-  - 📷 **Image**: Photos, diagrams, condition assessments
-  - 📄 **Supporting Document**: Inspection reports, maintenance logs, service records
-  - 🏥 **Birth Certificate/Equipment Accepting Form**: Original purchase/acceptance documentation
-  - 🔐 **Authority Registration Certificate**: Regulatory compliance certificates, safety certifications
-
-- **Rich Media Support**: Images (with lightbox preview), videos (player modal), PDFs (in-browser viewer), Office documents (download), CSV
-- **Caption & Notes**: Add context to each attachment
-- **Drag-and-drop Upload**: Intuitive file upload with category selection before submission
 
 ### 📊 Technology Gap Analysis
 - Generational comparison against current standards
@@ -62,13 +51,6 @@
 - Compliance readiness assessment
 - Multi-year replacement roadmap
 - Export-ready summary tables
-
-### 📱 Progressive Web App (PWA)
-- **Install on Home Screen**: Works on Android Chrome, Firefox, Safari, and Samsung Internet
-- **Offline Access**: Full app functionality after first load (via service worker & Workbox)
-- **Native-like Experience**: Standalone display mode, custom theme color, adaptive icons
-- **Fast Load**: Optimized precaching strategy and runtime caching of Google Fonts
-- **Mobile-First**: Responsive hamburger menu, optimized touch targets, viewport-fit=cover for notch support
 
 ## Installation
 
