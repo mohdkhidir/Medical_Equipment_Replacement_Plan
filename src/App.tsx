@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { Equipment } from './types/equipment';
+import type { Equipment, Attachment } from './types/equipment';
 import { SAMPLE_EQUIPMENT } from './data/sampleData';
 import { Header } from './components/Header';
 import { Dashboard } from './components/Dashboard';
@@ -11,12 +11,16 @@ import { ReportView } from './components/ReportView';
 
 type View = 'dashboard' | 'equipment' | 'add' | 'detail' | 'edit' | 'techgap' | 'report';
 
-const STORAGE_KEY = 'advancetech-equipment-v1';
+const STORAGE_KEY = 'advancetech-equipment-v2';
 
 function loadEquipment(): Equipment[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw) as Equipment[];
+    if (raw) {
+      const parsed = JSON.parse(raw) as Equipment[];
+      // Ensure all items have attachments array (migration from v1)
+      return parsed.map(e => ({ ...e, attachments: e.attachments ?? [] }));
+    }
   } catch {
     // ignore
   }
@@ -67,6 +71,12 @@ export default function App() {
     }
   }
 
+  function handleUpdateAttachments(equipmentId: string, attachments: Attachment[]) {
+    setEquipment(prev => prev.map(e =>
+      e.id === equipmentId ? { ...e, attachments } : e
+    ));
+  }
+
   const selectedEquipment = selectedId ? equipment.find(e => e.id === selectedId) : null;
 
   return (
@@ -84,7 +94,12 @@ export default function App() {
           <EquipmentForm onSave={handleSave} onBack={() => navigate('equipment')} />
         )}
         {view === 'detail' && selectedEquipment && (
-          <EquipmentDetail equipment={selectedEquipment} onBack={() => navigate('equipment')} onEdit={editEquipment} />
+          <EquipmentDetail
+            equipment={selectedEquipment}
+            onBack={() => navigate('equipment')}
+            onEdit={editEquipment}
+            onUpdateAttachments={handleUpdateAttachments}
+          />
         )}
         {view === 'edit' && selectedEquipment && (
           <EquipmentForm initial={selectedEquipment} onSave={handleSave} onBack={() => setView('detail')} />

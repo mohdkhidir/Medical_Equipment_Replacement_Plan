@@ -5,20 +5,22 @@ import {
 } from 'recharts';
 import {
   ArrowLeft, AlertTriangle, CheckCircle, Clock, Activity,
-  Wrench, Zap, Shield, Package, Cpu, Layers,
+  Wrench, Zap, Shield, Package, Cpu, Layers, Paperclip,
 } from 'lucide-react';
-import type { Equipment } from '../types/equipment';
+import type { Equipment, Attachment } from '../types/equipment';
 import { calculateScore, getScoreColor, getPriorityBgClass } from '../utils/scoringEngine';
 import { PRIORITY_LABELS, CATEGORY_LABELS, DEGRADATION_LABELS, PARTS_LABELS } from '../types/equipment';
+import { AttachmentManager } from './AttachmentManager';
 import { BENCHMARKS } from '../data/benchmarks';
 
 interface EquipmentDetailProps {
   equipment: Equipment;
   onBack: () => void;
   onEdit: (id: string) => void;
+  onUpdateAttachments: (id: string, attachments: Attachment[]) => void;
 }
 
-export function EquipmentDetail({ equipment, onBack, onEdit }: EquipmentDetailProps) {
+export function EquipmentDetail({ equipment, onBack, onEdit, onUpdateAttachments }: EquipmentDetailProps) {
   const result = useMemo(() => calculateScore(equipment), [equipment]);
   const benchmark = BENCHMARKS[equipment.category];
 
@@ -373,6 +375,22 @@ export function EquipmentDetail({ equipment, onBack, onEdit }: EquipmentDetailPr
           </div>
         </div>
       )}
+
+      {/* Attachments */}
+      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+        <h3 className="font-semibold text-slate-700 mb-4 flex items-center gap-2">
+          <Paperclip className="text-blue-500" size={18} />
+          Attachments
+          {equipment.attachments.length > 0 && (
+            <span className="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">{equipment.attachments.length}</span>
+          )}
+        </h3>
+        <AttachmentManager
+          equipmentId={equipment.id}
+          attachments={equipment.attachments}
+          onChange={updated => onUpdateAttachments(equipment.id, updated)}
+        />
+      </div>
     </div>
   );
 }

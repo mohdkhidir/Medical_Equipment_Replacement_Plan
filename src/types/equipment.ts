@@ -15,6 +15,19 @@ export type DegradationLevel = 0 | 1 | 2 | 3 | 4;
 
 export type ReplacementPriority = 'immediate' | 'plan' | 'monitor' | 'continue';
 
+export type AttachmentFileType = 'image' | 'video' | 'document' | 'other';
+
+export interface Attachment {
+  id: string;
+  equipmentId: string;
+  name: string;
+  fileType: AttachmentFileType;
+  mimeType: string;
+  sizeBytes: number;
+  uploadedAt: string;
+  caption: string;
+}
+
 export interface MaintenanceRecord {
   id: string;
   date: string;
@@ -72,6 +85,9 @@ export interface Equipment {
   isJCAHOCompliant: boolean;
   lastInspectionDate: string;
   lastInspectionResult: 'pass' | 'conditional' | 'fail' | 'pending';
+
+  // Attachments (metadata only; file data stored in IndexedDB)
+  attachments: Attachment[];
 
   // Notes
   notes: string;

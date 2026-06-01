@@ -46,6 +46,7 @@ function blankEquipment(): Equipment {
     isJCAHOCompliant: true,
     lastInspectionDate: '',
     lastInspectionResult: 'pass',
+    attachments: [],
     notes: '',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
