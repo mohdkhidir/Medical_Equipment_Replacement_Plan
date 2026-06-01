@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0f172a"/>
+  <!-- Medical cross -->
+  <rect x="210" y="110" width="92" height="292" rx="18" fill="#2563eb"/>
+  <rect x="110" y="210" width="292" height="92" rx="18" fill="#2563eb"/>
+  <!-- ECG / pulse line -->
+  <polyline
+    points="88,256 168,256 204,172 240,340 276,192 312,300 348,256 424,256"
+    fill="none"
+    stroke="#93c5fd"
+    stroke-width="20"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

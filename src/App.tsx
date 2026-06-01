@@ -8,6 +8,7 @@ import { EquipmentDetail } from './components/EquipmentDetail';
 import { EquipmentForm } from './components/EquipmentForm';
 import { TechGapAnalysis } from './components/TechGapAnalysis';
 import { ReportView } from './components/ReportView';
+import { InstallBanner } from './components/InstallBanner';
 
 type View = 'dashboard' | 'equipment' | 'add' | 'detail' | 'edit' | 'techgap' | 'report';
 
@@ -82,6 +83,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Header currentView={view as 'dashboard' | 'equipment' | 'add' | 'techgap' | 'report'} onNavigate={navigate} />
+      <InstallBanner />
 
       <main className="flex-1 overflow-auto">
         {view === 'dashboard' && (
